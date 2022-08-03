@@ -50,4 +50,22 @@ public class ArticleController {
         rq.setAttr("article",articleDto);
         rq.view("/usr/article/detail");
     }
+
+    public void delete(Rq rq) {
+        long findId=rq.getIdxValue(1,0);
+        if(findId==0){
+            rq.appendBody("<script>alert(\"번호를 입력해주세요\");</script>");
+            rq.appendBody("<script>history.back();</script>");
+            return;
+        }
+        ArticleDto articleDto=articleService.findById(findId);
+        if(articleDto==null){
+            rq.appendBody("<script>alert(\"해당글이 존재 하지 않습니다.\");</script>");
+            rq.appendBody("<script>history.back()</script>");
+            return;
+        }
+        articleService.delete(findId);
+        rq.appendBody("<script>alert(\"해당글을 삭제하였습니다!\")</script>");
+        rq.appendBody("<script>location.replace(\"/usr/article/list\")</script>");
+    }
 }

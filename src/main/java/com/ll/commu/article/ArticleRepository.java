@@ -44,4 +44,10 @@ public class ArticleRepository {
 
         });
     }
+//삭제를 객체를 찾아서 지워줌
+    public void delete(long findId) {
+        ArticleDto articleDto=findById(findId);
+        if(articleDto==null) return ;
+        articles.remove(articleDto);
+    }
 }
