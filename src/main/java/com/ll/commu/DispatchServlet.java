@@ -20,7 +20,7 @@ public class DispatchServlet extends HttpServlet {
             case "GET":
                 switch (rq.getPath()){
                     case "/usr/article/write":
-                        rq.view("/usr/article/write");
+                        articleController.showWrite(rq);
                         break;
 
                 }

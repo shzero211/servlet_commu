@@ -8,6 +8,8 @@ public class ArticleController {
     public ArticleController(){
         articleService=new ArticleService();
     }
+
+    //article 작성
     public void write(Rq rq){
         String name=rq.getStrParam("title","");
         String content=rq.getStrParam("content","");
@@ -15,5 +17,9 @@ public class ArticleController {
         rq.appendBody("""
                 %d 번 정보 저장완료 %s ,%s!
                 """.formatted(id,name,content));
+    }
+
+    public void showWrite(Rq rq) {
+        rq.view("/usr/article/write");
     }
 }

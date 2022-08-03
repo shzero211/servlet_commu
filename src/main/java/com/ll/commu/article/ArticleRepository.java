@@ -12,6 +12,7 @@ public class ArticleRepository {
         articles=new ArrayList<>();
         id=0;
     }
+    //articles 에 save
     public long save(String name,String content){
         ArticleDto articleDtoNew=new ArticleDto();
         articleDtoNew.setId(++id);
