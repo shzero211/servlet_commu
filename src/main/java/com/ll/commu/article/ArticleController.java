@@ -16,9 +16,8 @@ public class ArticleController {
         String name=rq.getStrParam("title","");
         String content=rq.getStrParam("content","");
         long id=articleService.write(name,content);
-        rq.appendBody("""
-                %d 번 정보 저장완료 %s ,%s!
-                """.formatted(id,name,content));
+        rq.appendBody("<script>alert(\"해당글을 추가했습니다.\")</script>");
+        rq.appendBody("<script>location.replace(\"/usr/article/list\")</script>");
     }
 
     //작성 페이지로 이동
