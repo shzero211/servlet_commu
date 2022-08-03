@@ -32,8 +32,15 @@ public class Rq {
     public String getPath(){
         String path=req.getRequestURI();
         String[] pathBits=path.split("/");
-        System.out.println(path);
         return "/%s/%s/%s".formatted(pathBits[1],pathBits[2],pathBits[3]);
+    }
+
+    public String getStrParam(String paramName,String defaultValue){
+        String value=req.getParameter(paramName);
+        if(value==null){
+            return defaultValue;
+        }
+        return value;
     }
 
     //int 값인 파라미터 찾아주는 기능(숫자변환 예외처리)
@@ -65,7 +72,7 @@ public class Rq {
 
     //서블릿 이동(req.getRequestDispatcher 로 forward)
     public void view(String path){
-        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/jsp/"+path+"/.jsp");
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/jsp/"+path+".jsp");
         try {
             requestDispatcher.forward(req,resp);
         } catch (ServletException e) {

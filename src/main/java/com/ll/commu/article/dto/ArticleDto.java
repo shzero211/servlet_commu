@@ -12,5 +12,5 @@ import lombok.Setter;
 public class ArticleDto {
     private long id;
     private String title;
-    private String body;
+    private String content;
 }
