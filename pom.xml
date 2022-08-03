@@ -8,13 +8,22 @@
     <artifactId>servlet_commu_v1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        <!--서블릿 추가-->
+        <!--서블릿-->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--롬복-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
