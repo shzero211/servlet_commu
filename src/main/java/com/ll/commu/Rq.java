@@ -46,4 +46,21 @@ public class Rq {
         }
     }
 
+    //req 에 값을 변수에 담기
+    public void setAttr(String name,Object value){
+        req.setAttribute(name,value);
+    }
+
+    //서블릿 이동(req.getRequestDispatcher 로 forward)
+    public void view(String path){
+        RequestDispatcher requestDispatcher=req.getRequestDispatcher("/jsp/"+path+"/.jsp");
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
