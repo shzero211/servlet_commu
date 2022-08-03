@@ -3,6 +3,8 @@ package com.ll.commu.article;
 import com.ll.commu.Rq;
 import com.ll.commu.article.dto.ArticleDto;
 
+import java.util.List;
+
 public class ArticleController {
     private ArticleService articleService;
     public ArticleController(){
@@ -19,7 +21,14 @@ public class ArticleController {
                 """.formatted(id,name,content));
     }
 
-    public void showWrite(Rq rq) {
+    public void showWriteForm(Rq rq) {
         rq.view("/usr/article/write");
+    }
+
+    //reqeust 에 attribute를 담아서 직접 보내기(json X)
+    public void showList(Rq rq){
+        List<ArticleDto> articles=articleService.findAll();
+        rq.setAttr("articles",articles);
+        rq.view("/usr/article/list");
     }
 }

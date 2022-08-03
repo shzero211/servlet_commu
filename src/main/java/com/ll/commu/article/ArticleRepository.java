@@ -21,4 +21,8 @@ public class ArticleRepository {
         articles.add(articleDtoNew);
         return id;
     }
+
+    public List<ArticleDto> findAll() {
+        return articles;
+    }
 }

@@ -2,6 +2,8 @@ package com.ll.commu.article;
 
 import com.ll.commu.article.dto.ArticleDto;
 
+import java.util.List;
+
 public class ArticleService {
     private ArticleRepository articleRepository;
     public ArticleService(){
@@ -9,5 +11,9 @@ public class ArticleService {
     }
     public long write(String name,String content){
         return articleRepository.save(name,content);
+    }
+
+    public List<ArticleDto> findAll() {
+        return articleRepository.findAll();
     }
 }
