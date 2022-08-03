@@ -23,6 +23,20 @@ public class Rq {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
     }
+    //검색이후 특정 인덱스의 값을 찾는 메서드(idx 1부터 넣을수있음)
+    public long getIdxValue(int idx,long defaultValue){
+        String[] str=req.getRequestURI().split("/");
+        String value;
+       try{
+           value=str[3+idx];
+       }catch (ArrayIndexOutOfBoundsException e){
+           return defaultValue;
+       }
+        if(value==null){
+            return defaultValue;
+        }
+        return Integer.parseInt(value);
+    }
 //http method 얻기
     public String getMethod(){
        return req.getMethod();

@@ -11,7 +11,7 @@ public class ArticleController {
         articleService=new ArticleService();
     }
 
-    //article 작성
+    //article 작성(post요청)
     public void write(Rq rq){
         String name=rq.getStrParam("title","");
         String content=rq.getStrParam("content","");
@@ -21,14 +21,33 @@ public class ArticleController {
                 """.formatted(id,name,content));
     }
 
+    //작성 페이지로 이동
     public void showWriteForm(Rq rq) {
         rq.view("/usr/article/write");
     }
 
-    //reqeust 에 attribute를 담아서 직접 보내기(json X)
+    //articleDto의 모든 정보를 reqeust의 attribute에 담아서 직접 보내기(json X)
     public void showList(Rq rq){
         List<ArticleDto> articles=articleService.findAll();
         rq.setAttr("articles",articles);
         rq.view("/usr/article/list");
+    }
+
+//상세정보를 변수로 넘기고 jsp로 이동
+    public void showDetail(Rq rq) {
+        long detailId=rq.getIdxValue(1,0);
+        if(detailId==0){
+            rq.appendBody("<script>alert(\"상세페이지 번호를 입력해주세요\");</script>");
+            rq.appendBody("<script>history.back()</script>");
+            return;
+        }
+        ArticleDto articleDto=articleService.findById(detailId);
+        if(articleDto==null){
+            rq.appendBody("<script>alert(\"해당 글은 존재하지 않습니다.\");</script>");
+            rq.appendBody("<script>history.back()</script>");
+            return;
+        }
+        rq.setAttr("article",articleDto);
+        rq.view("/usr/article/detail");
     }
 }
