@@ -35,7 +35,11 @@ public class Rq {
         if(value==null){
             return defaultValue;
         }
-        return Integer.parseInt(value);
+        try{
+            return Integer.parseInt(value);
+        }catch (NumberFormatException e){
+            return defaultValue;
+        }
     }
 //http method 얻기
     public String getMethod(){
