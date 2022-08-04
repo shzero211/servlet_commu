@@ -23,7 +23,7 @@ function ArticleSave_submit(form){
     <!-- mx-auto : margin-left:auto; margin-right:auto; -->
     <div class="container px-3 mx-auto">
         <h1 class="font-bold text-lg">게시물 작성</h1>
-        <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;" >
+        <form method="POST" onsubmit="ArticleSave_submit(this); return false;" >
             <div>
                 <span>제목</span>
                 <div>
