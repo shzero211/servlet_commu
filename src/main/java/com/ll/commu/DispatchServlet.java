@@ -28,7 +28,9 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/detail":
                         articleController.showDetail(rq);
                         break;
-
+                    case "/usr/article/modify":
+                        articleController.modifyForm(rq);
+                        break;
                 }
                 break;
             case "POST":
@@ -38,6 +40,9 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "/usr/article/delete":
                         articleController.delete(rq);
+                        break;
+                    case "/usr/article/modify":
+                        articleController.modify(rq);
                         break;
                 }
                 break;

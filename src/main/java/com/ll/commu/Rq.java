@@ -53,23 +53,14 @@ public class Rq {
         return "/%s/%s/%s".formatted(pathBits[1],pathBits[2],pathBits[3]);
     }
 
-    public String getStrParam(String paramName,String defaultValue){
-        String value=req.getParameter(paramName);
-        if(value==null){
-            return defaultValue;
-        }
-        return value;
-    }
-
-    //int 값인 파라미터 찾아주는 기능(숫자변환 예외처리)
-    public int getIntParam(String paramName,int defaultValue){
+    public <T>T getParam(String paramName,T defaultValue){
         String value=req.getParameter(paramName);
         if(value==null){
             return defaultValue;
         }
         try{
-            return Integer.parseInt(value);
-        }catch (NumberFormatException e){
+            return (T)value;
+        }catch (Exception e){
             return defaultValue;
         }
     }
