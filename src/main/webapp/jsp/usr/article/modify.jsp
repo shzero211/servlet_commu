@@ -1,30 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<form method="POST">
-    <div>
-        <span>번호</span>
-        <div>
-            ${article.id}
-        </div>
-    </div>
 
-    <div>
-        <span>제목</span>
-        <div>
-            <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="${article.title}" />
-        </div>
-    </div>
+<%@ include file="../common/head.jspf"%>
 
-    <div>
-        <span>내용</span>
-        <div>
-            <input name="content" type="text" maxlength="300" placeholder="내용을 입력해주세요." value="${article.content}" />
-        </div>
-    </div>
+<script>
+function ArticleSave__submitForm(form) {
+    form.title.value = form.title.value.trim();
+    if ( form.title.value.length == 0 ) {
+        alert('제목을 입력해주세요.');
+        form.title.focus();
+        return;
+    }
+    form.body.value = form.body.value.trim();
+    if ( form.body.value.length == 0 ) {
+        alert('내용을 입력해주세요.');
+        form.body.focus();
+        return;
+    }
+    form.submit();
+}
+</script>
 
-    <div>
-        <span>수정</span>
-        <div>
-            <input type="submit" value="수정" />
-        </div>
+<section>
+    <div class="container px-3 mx-auto">
+        <h1 class="font-bold text-lg">게시물 수정</h1>
+        <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
+            <div class="flex gap-3">
+                <span>번호</span>
+                <div>
+                    ${article.id}
+                </div>
+            </div>
+
+            <div class="flex gap-3">
+                <span>제목</span>
+                <div>
+                    <input class="border-[2px]"name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="${article.title}" />
+                </div>
+            </div>
+
+            <div class="flex gap-3">
+                <span>내용</span>
+                <div>
+                    <input class="border-[2px]" name="content" type="text" maxlength="300" placeholder="내용을 입력해주세요." value="${article.content}" />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <button class="btn btn-primary btn-sm">수정</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+</section>
+
+<%@ include file="../common/footer.jspf"%>
