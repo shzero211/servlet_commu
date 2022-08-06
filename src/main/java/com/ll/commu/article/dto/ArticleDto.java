@@ -13,20 +13,4 @@ public class ArticleDto {
     private String title;
     private String content;
 
-    public String toJson() {
-    ObjectMapper om=new ObjectMapper();
-        try {
-            return om.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-           return "";
-        }
-    }
-    public ArticleDto toObj(String json){
-        ObjectMapper om=new ObjectMapper();
-        try {
-            return om.readValue(json,ArticleDto.class);
-        } catch (JsonProcessingException e) {
-            return null;
-        }
-    }
 }
