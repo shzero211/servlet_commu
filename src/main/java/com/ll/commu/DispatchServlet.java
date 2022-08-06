@@ -2,6 +2,7 @@ package com.ll.commu;
 
 import com.ll.commu.article.ArticleController;
 import com.ll.commu.article.ArticleService;
+import com.ll.commu.comment.CommentController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import java.io.IOException;
 @WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
     private  ArticleController articleController=new ArticleController();
+    private CommentController commentController=new CommentController();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Rq rq=new Rq(req,resp);
@@ -30,6 +32,9 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "/usr/article/modify":
                         articleController.modifyForm(rq);
+                        break;
+                    case "/usr/comment/getList":
+                       commentController.getAllComment(rq);
                         break;
                 }
                 break;

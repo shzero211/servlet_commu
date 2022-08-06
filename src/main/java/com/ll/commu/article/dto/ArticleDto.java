@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+//게시글
 public class ArticleDto {
     private long id;
     private String title;
