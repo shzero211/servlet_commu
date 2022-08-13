@@ -12,7 +12,7 @@ public class CommentController {
         this.commentService=new CommentService();
     }
     public void getAllComment(Rq rq) {
-        long articleId=rq.getIdxValue(1,0);
+        long articleId=(long)rq.getIdxValue(1,0);
         List<CommentDto> commentDtos=null;
         if(articleId==0){
            commentDtos=commentService.findAll();
@@ -20,6 +20,6 @@ public class CommentController {
             commentDtos=commentService.findByArticleId(articleId);
         }
 
-        rq.json(commentDtos);
+        rq.json(new JsonToMapResult("결과코드","메세지",commentDtos));
     }
 }

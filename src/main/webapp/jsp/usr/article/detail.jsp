@@ -16,4 +16,23 @@
          </div>
     </div>
 </section>
+<script>
+    function Comments_load(){
+        $.ajax({
+            url : "/usr/comment/getList/1",
+            dataType : "json",
+            type : "GET",
+            success : function(data){
+               alert(data.data[0].nickName);
+            }
+
+        });
+    }
+</script>
+<div class="comments">
+
+</div>
+<button onclick=" Comments_load();" class="btn btn-xs">최신글 가져오기</button>
+
+
 <%@ include file="../common/footer.jspf"%>

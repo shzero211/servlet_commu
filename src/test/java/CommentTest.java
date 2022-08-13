@@ -14,4 +14,9 @@ public class CommentTest {
         List<CommentDto>comments=commentService.findAll();
         Assertions.assertEquals( comments.get(0).getNickName(),"익명1");
     }
+    @Test
+    public void findByArticleId(){
+        List<CommentDto> comments=commentService.findByArticleId(1);
+        Assertions.assertEquals(10,comments.size());
+    }
 }
