@@ -1,5 +1,7 @@
 package com.ll.commu;
 
+import com.ll.commu.Ut.Ut;
+import com.ll.commu.comment.dto.CommentDto;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class Rq {
     private final HttpServletRequest req;
@@ -91,4 +94,15 @@ public class Rq {
         }
     }
 
+    public void alertErrorAndBack(String s) {
+        this.appendBody("<script>alert("+s+");</script>");
+        this.appendBody("<script>history.back();</script>");
+    }
+
+    public void json(Object resultData) {
+        resp.setContentType("application/json; charset=utf-8");
+        String json= Ut.str.toJson(resultData,"");
+        System.out.println(json);
+        appendBody(json);
+    }
 }
