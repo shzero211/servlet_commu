@@ -102,7 +102,6 @@ public class Rq {
     public void json(Object resultData) {
         resp.setContentType("application/json; charset=utf-8");
         String json= Ut.str.toJson(resultData,"");
-        System.out.println(json);
         appendBody(json);
     }
 }

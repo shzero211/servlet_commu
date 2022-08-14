@@ -49,6 +49,8 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/modify":
                         articleController.modify(rq);
                         break;
+                    case "/usr/comment/write":
+                        commentController.write(rq);
                 }
                 break;
         }

@@ -4,6 +4,7 @@ import com.ll.commu.comment.dto.CommentDto;
 
 import javax.xml.stream.events.Comment;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommentRepository {
@@ -39,5 +40,19 @@ public class CommentRepository {
             }
         }
         return commentDtos;
+    }
+
+    public long write(long articleId, String nickName, String content) {
+        long size=0;
+
+        for(CommentDto commentDto1:comments){
+            if(articleId==commentDto1.getArticleId()){
+                size++;
+            }
+        }
+        size++;
+        CommentDto commentDto=new CommentDto(size,articleId,nickName,content);
+        comments.add(commentDto);
+        return size;
     }
 }

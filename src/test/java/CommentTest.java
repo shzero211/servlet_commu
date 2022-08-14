@@ -19,4 +19,9 @@ public class CommentTest {
         List<CommentDto> comments=commentService.findByArticleId(1);
         Assertions.assertEquals(10,comments.size());
     }
+    @Test
+    public void save(){
+        long size= commentService.write(1,"nickname","dsad");
+        Assertions.assertEquals(11,size);
+    }
 }

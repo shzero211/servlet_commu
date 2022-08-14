@@ -17,4 +17,8 @@ public class CommentService {
     public List<CommentDto> findByArticleId(long articleId) {
         return commentRepository.findByArticleId(articleId);
     }
+
+    public long write(long articleId, String nickName, String content) {
+        return commentRepository.write(articleId,nickName,content);
+    }
 }

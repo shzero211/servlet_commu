@@ -18,5 +18,9 @@ public class CommentDto {
     private String nickName;
     //글
     private String content;
-
+    public CommentDto(long articleId,String nickName,String content){
+        this.articleId=articleId;
+        this.nickName=nickName;
+        this.content=content;
+    }
 }
