@@ -16,23 +16,43 @@
          </div>
     </div>
 </section>
+
 <script>
+    let last_id=-1;
     function Comments_load(){
-        $.ajax({
-            url : "/usr/comment/getList/1",
-            dataType : "json",
-            type : "GET",
-            success : function(data){
-               alert(data.data[0].nickName);
-            }
+            $.ajax({
+                url : "/usr/comment/getList/${article.id}",
+                dataType : "json",
+                type : "GET",
+                success : function(response) {
 
-        });
-    }
+                            $.each(response.data, function(index,item) {
+                            					if(item.id>last_id){
+                            					$(".comment_list").append("<li><a>");
+                                                $(".comment_list").append(item.nickName);
+                                                $(".comment_list").append("</a></li>");
+                                                $(".comment_list").append("<li><a>");
+                                                $(".comment_list").append(item.content);
+                                                $(".comment_list").append("</a></li>");
+                                                last_id=item.id;
+                            					}
+                            				});
+
+                        }
+            });
+            setTimeout(Comments_load, 3000);
+        }
 </script>
-<div class="comments">
 
-</div>
-<button onclick=" Comments_load();" class="btn btn-xs">최신글 가져오기</button>
+
+<section>
+    <div class="container px-3 mx-auto">
+        <h1>댓글</h1>
+        <ul class="comment_list">
+        </ul>
+    </div>
+    <script>Comments_load();</script>
+</section>
 
 
 <%@ include file="../common/footer.jspf"%>
